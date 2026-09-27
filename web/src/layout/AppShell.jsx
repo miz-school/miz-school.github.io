@@ -30,7 +30,7 @@ export default function AppShell({ module, children }) {
         <div className={`drawer-backdrop ${open ? 'open' : ''}`} onClick={() => setOpen(false)} />
         <aside className={`sidebar ${open ? 'open' : ''}`} aria-label="Main navigation">
           <div className="sb-school">
-            {r.platform ? <MizMark size={30} /> : (
+            {r.platform ? <MizMark size={30} light /> : (
               <>
                 <Crest school={school} size={38} />
                 <div className="grow">
