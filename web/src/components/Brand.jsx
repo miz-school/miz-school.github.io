@@ -22,16 +22,29 @@ export function Crest({ school, size = 40 }) {
   );
 }
 
-export function MizMark({ size = 30, light = false }) {
+/** Miz School shield icon: gold keyline shield, serif "m", gold four-point star. */
+export function MizShield({ size = 30, light = false, tile = false }) {
+  const ink = light || tile ? '#fff' : '#0B2345';
   return (
-    <span className="row" style={{ gap: 9 }}>
-      <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
-        <rect width="40" height="40" rx="7" fill={light ? '#fff' : '#0B2345'} />
-        <path d="M9 29 V13 l6 8 l5 -8 l5 8 l6 -8 V29" stroke={light ? '#0B2345' : '#fff'} strokeWidth="3.2" fill="none" strokeLinejoin="round" strokeLinecap="round" />
-        <rect x="9" y="31.5" width="22" height="2.4" rx="1.2" fill="#C8962E" />
-      </svg>
-      <span style={{ fontWeight: 700, fontSize: size * 0.62, color: light ? '#fff' : '#0B2345', letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
-        Miz <span style={{ fontWeight: 500 }}>School</span>
+    <svg width={size} height={size * 1.12} viewBox="0 0 40 45" aria-hidden="true" style={{ flex: 'none', display: 'block' }}>
+      {tile && <rect x="-2" y="-1" width="44" height="47" rx="10" fill="#0B2345" />}
+      <path d="M20 2.2 C25.6 5.6 30.8 7.1 36.6 7.9 V23.6 C36.6 33.4 29.2 39.6 20 43.2 C10.8 39.6 3.4 33.4 3.4 23.6 V7.9 C9.2 7.1 14.4 5.6 20 2.2 Z" fill="none" stroke="#C8962E" strokeWidth="1.7" strokeLinejoin="round" />
+      <text x="20" y="25.2" textAnchor="middle" fontFamily="'Source Serif 4', Georgia, serif" fontWeight="700" fontSize="19" fill={ink}>m</text>
+      <path d="M20 29.6 Q20.55 32.75 23.7 33.3 Q20.55 33.85 20 37 Q19.45 33.85 16.3 33.3 Q19.45 32.75 20 29.6 Z" fill="#C8962E" />
+    </svg>
+  );
+}
+
+/** Miz School logo lockup: shield + two-line serif wordmark, the i's dot is the gold star. */
+export function MizMark({ size = 30, light = false }) {
+  const ink = light ? '#fff' : '#0B2345';
+  const f = size * 0.62;
+  return (
+    <span className="row" style={{ gap: size * 0.28, alignItems: 'center' }}>
+      <MizShield size={size * 0.92} light={light} />
+      <span className="serif" style={{ color: ink, lineHeight: 0.92, fontWeight: 700, display: 'inline-flex', flexDirection: 'column', whiteSpace: 'nowrap' }}>
+        <span style={{ fontSize: f * 1.05, letterSpacing: '-0.01em' }}>M<span style={{ position: 'relative' }}>ı<svg viewBox="0 0 10 10" style={{ position: 'absolute', left: '50%', top: '-0.06em', width: '0.36em', height: '0.36em', transform: 'translateX(-50%)' }} aria-hidden="true"><path d="M5 0 Q5.6 4.4 10 5 Q5.6 5.6 5 10 Q4.4 5.6 0 5 Q4.4 4.4 5 0 Z" fill="#C8962E" /></svg></span>z</span>
+        <span style={{ fontSize: f * 0.86, fontWeight: 600 }}>School</span>
       </span>
     </span>
   );
